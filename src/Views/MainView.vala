@@ -21,7 +21,8 @@ public class SwitchboardPlugUserAccounts.Widgets.MainView : Gtk.Box {
 
         listbox = new Gtk.ListBox () {
             selection_mode = SINGLE,
-            vexpand = true
+            vexpand = true,
+            hexpand = true
         };
         listbox.set_header_func (update_headers);
 
@@ -81,6 +82,9 @@ public class SwitchboardPlugUserAccounts.Widgets.MainView : Gtk.Box {
             shrink_start_child = false,
             shrink_end_child = false
         };
+
+        var settings = new Settings ("io.elementary.settings");
+        settings.bind ("sidebar-position", paned, "position", DEFAULT);
 
         append (paned);
 
